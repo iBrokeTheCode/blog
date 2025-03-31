@@ -1,6 +1,10 @@
 from django.contrib import admin
 
-from .models import Category, Post, Tag
+from .models import Category, Post, Tag, BusinessInformation, SocialMedia
+
+# ================================================================
+#                               POST
+# ================================================================
 
 
 @admin.register(Category)
@@ -30,3 +34,20 @@ class PostAdmin(admin.ModelAdmin):
         return ', '.join([tag.name for tag in obj.tags.all()])
 
     post_tags.short_description = 'Tags'  # type: ignore
+
+# ================================================================
+#                        BUSINESS INFORMATION
+# ================================================================
+
+
+@admin.register(BusinessInformation)
+class BusinessInformationAdmin(admin.ModelAdmin):
+    readonly_fields = ('created', 'updated')
+    list_display = ('name', 'location', 'user', 'created')
+    ordering = ('name', '-created')
+
+
+@admin.register(SocialMedia)
+class SocialMediaAdmin(admin.ModelAdmin):
+    readonly_fields = ('created', 'updated')
+    list_display = ('identifier', 'name', 'url', 'business', 'created')

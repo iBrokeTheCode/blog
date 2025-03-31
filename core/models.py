@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+# ================================================================
+#                               POST
+# ================================================================
+
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
     active = models.BooleanField(default=True)
@@ -56,3 +60,48 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+# ================================================================
+#                        BUSINESS INFORMATION
+# ================================================================
+
+
+class BusinessInformation(models.Model):
+    name = models.CharField(max_length=100)
+    about_us = models.TextField(blank=True)
+    # Made with <3 in location
+    location = models.CharField(max_length=200, blank=True)
+    # Make unique instance
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Business Information'
+        verbose_name_plural = 'Business Information'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+
+class SocialMedia(models.Model):
+    identifier = models.CharField(max_length=100, unique=True,
+                                  #   choices=[('facebook', 'Facebook'),]
+                                  )
+    name = models.CharField(max_length=100)
+    url = models.URLField(max_length=200)
+    icon = models.CharField(max_length=100, blank=True)
+    business = models.ForeignKey(
+        BusinessInformation, on_delete=models.CASCADE, related_name='social_media')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Social Media'
+        verbose_name_plural = 'Social Media'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
