@@ -1,0 +1,69 @@
+{% extends "core/base.html" %} {% block title %} Post {% endblock title %}
+
+<!-- Hero Start -->
+{%block main_content %}
+<div>
+  {% comment %} <h3 class="pb-4 mb-4 fst-italic border-bottom">From the Firehose</h3> {% endcomment %}
+
+  <article class="blog-post">
+    <h2 class="display-5 link-body-emphasis mb-1">Sample blog post</h2>
+    <p class="blog-post-meta">January 1, 2021 by <a href="{% url "core:author" %}">Mark</a></p>
+
+    <div class="bg-secondary w-100 mb-4" style="height: 300px"></div>
+
+    <p>
+      This blog post shows a few different types of content that’s supported and
+      styled with Bootstrap. Basic typography, lists, tables, images, code, and
+      more are all supported as expected.
+    </p>
+    <hr />
+    <h2>Sub Title</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis nam dolor
+      ab consequatur provident, in reprehenderit molestias dolores voluptatum,
+      natus porro officiis, laudantium cum vitae maxime minus quasi incidunt
+      praesentium. Quas, at vel est ipsa quo maxime corrupti unde doloremque eos
+      architecto ducimus quasi. Odit deserunt quas commodi sint eum dolores
+      saepe magnam esse aspernatur tempora, aliquid, dolorem itaque optio. Vitae
+      mollitia provident numquam sapiente ullam? Harum, consequuntur error.
+      Laborum, alias. Quisquam possimus, cumque maxime deserunt voluptatibus
+      dolore ducimus nisi necessitatibus quis assumenda? Sint inventore eligendi
+      totam tempore iure recusandae? Asperiores soluta pariatur, cupiditate
+      vitae qui laudantium odit laboriosam, temporibus quod reprehenderit
+      repudiandae fugiat ullam, labore magnam dolorum voluptatum repellat
+      facere! Officiis sit distinctio, dolor nobis aliquid vero repudiandae
+      itaque.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, cum. Non
+      numquam ex ducimus est eum incidunt veritatis provident totam eligendi,
+      quibusdam vitae ad sed explicabo exercitationem eos placeat quaerat!
+      Facilis fuga dolorem soluta asperiores? Blanditiis, obcaecati magnam
+      facilis quisquam doloremque et eum totam incidunt nostrum nesciunt qui
+      iusto vel ipsam ut? Quia iure, vitae aut optio possimus eligendi
+      dignissimos. Eligendi asperiores neque ipsa at ut! Eius excepturi tempore
+      ut quibusdam delectus, at eaque pariatur ratione tenetur natus labore
+      illum iusto fuga, blanditiis magni, magnam nemo nobis! Quas, sed veniam.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque itaque
+      sint illum rerum numquam voluptas dolorum rem earum minima voluptatum,
+      necessitatibus, veritatis saepe molestias, laudantium qui vero non
+      quibusdam suscipit. Sequi magnam delectus sed porro quibusdam culpa
+      aperiam tenetur autem voluptates ratione officia, ullam optio, veniam
+      minus accusamus mollitia rerum quam nemo ipsa architecto totam sit
+      suscipit? Recusandae, iusto harum.
+    </p>
+  </article>
+
+  <nav class="blog-pagination" aria-label="Pagination">
+    <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
+    <a
+      class="btn btn-outline-secondary rounded-pill disabled"
+      aria-disabled="true"
+      >Newer</a
+    >
+  </nav>
+</div>
+{% endblock main_content %}
+<!-- Hero End -->
