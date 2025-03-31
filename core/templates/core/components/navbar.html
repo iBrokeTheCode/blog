@@ -5,8 +5,8 @@
         <a
           class="blog-header-logo text-body-emphasis text-decoration-none"
           href="{% url "core:home" %}"
-          >Your Blog</a
-        >
+          >{{ business.name }}
+        </a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="link-secondary" href="#" aria-label="Search">
@@ -35,18 +35,9 @@
 
   <div class="nav-scroller py-1 mb-3 border-bottom">
     <nav class="nav nav-underline justify-content-between">
-      <a class="nav-item nav-link link-body-emphasis active" href="{% url "core:category" %}">World</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">U.S.</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Technology</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Design</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Culture</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Business</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Politics</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Opinion</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Science</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Health</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Style</a>
-      <a class="nav-item nav-link link-body-emphasis" href="{% url "core:category" %}">Travel</a>
+      {% for category in categories %}
+        <a class="nav-item nav-link link-body-emphasis active" href="{% url "core:category" %}">{{ category }}</a>
+      {% endfor %}
     </nav>
   </div>
 </div>

@@ -69,7 +69,6 @@ class Post(models.Model):
 class BusinessInformation(models.Model):
     name = models.CharField(max_length=100)
     about_us = models.TextField(blank=True)
-    # Made with <3 in location
     location = models.CharField(max_length=200, blank=True)
     # Make unique instance
     user = models.OneToOneField(
