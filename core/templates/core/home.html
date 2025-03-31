@@ -1,4 +1,4 @@
-{% extends "core/base.html" %} {% block title %} Home {% endblock title %}
+{% extends "core/base.html" %} {% block title %} {{ request.path }} {% endblock title %}
 
 
 <!-- Main Start -->
@@ -58,7 +58,6 @@
           <svg class="bi"><use xlink:href="#chevron-right" /></svg>
         </a>
       </div>
-      {% comment %} <div class="col-auto d-none d-lg-block"> {% endcomment %}
       <div class="col-6 d-none d-lg-block">
         <svg
           class="bd-placeholder-img"
@@ -72,7 +71,6 @@
         >
           <title>Placeholder</title>
           <rect width="100%" height="100%" fill="#55595c" />
-          <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
         </svg>
       </div>
     </div>
@@ -112,7 +110,7 @@
         >
           <title>Placeholder</title>
           <rect width="100%" height="100%" fill="#55595c" />
-          <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+          {% comment %} <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text> {% endcomment %}
         </svg>
       </div>
     </div>
