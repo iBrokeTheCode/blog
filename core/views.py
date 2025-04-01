@@ -1,8 +1,13 @@
 from django.shortcuts import render
 
+from .models import Post
+
 
 def home(request):
-    return render(request, 'core/home.html', {})
+    context = {
+        'posts': Post.objects.filter(published=True)
+    }
+    return render(request, 'core/home.html', context)
 
 
 def post(request):
