@@ -13,21 +13,35 @@ def home(request):
 
     context = {
         'posts': posts,
+        'title': 'Home',
     }
     return render(request, 'core/home.html', context)
 
 
 def post(request):
+
     return render(request, 'core/post.html', {})
 
 
 def author(request):
-    return render(request, 'core/home.html', {})
+    context = {
+        'title': 'Author',
+    }
+
+    return render(request, 'core/home.html', context)
 
 
 def category(request):
-    return render(request, 'core/home.html', {})
+    context = {
+        'title': 'Category',
+    }
+
+    return render(request, 'core/home.html', context)
 
 
 def date(request):
-    return render(request, 'core/home.html', {})
+    context = {
+        'title': 'Date',
+    }
+
+    return render(request, 'core/home.html', context)

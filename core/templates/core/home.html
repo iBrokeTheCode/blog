@@ -1,4 +1,4 @@
-{% extends "core/base.html" %} {% block title %} {{ request.path }} {% endblock title %}
+{% extends "core/base.html" %} {% block title %} {{ title|default:'Your favorite site' }} {% endblock title %}
 
 <!-- Main Start -->
 {% block main_content %}
@@ -46,6 +46,15 @@
       {% else %}
       <!-- Remaining Posts Start -->
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-300 position-relative">
+        <!-- Image Start -->
+        {% if post.image %}
+        <div class="col-4 d-none d-lg-block">
+          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid object-fit-cover h-100">
+        </div>
+        {% endif %}
+        <!-- Image End -->
+        
+        <!-- Post Text Start -->
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary-emphasis">{{ post.category }}</strong>
           <h3 class="mb-0">{{ post.title }}</h3>
@@ -58,12 +67,7 @@
             <svg class="bi"><use xlink:href="#chevron-right" /></svg>
           </a>
         </div>
-
-        {% if post.image %}
-        <div class="col-6 d-none d-lg-block">
-          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid">
-        </div>
-        {% endif %}
+        <!-- Post Text End -->
 
       </div>
       {% endif %}
