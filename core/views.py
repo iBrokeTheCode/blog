@@ -1,11 +1,18 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 
 from .models import Post
 
 
 def home(request):
+    posts_list = Post.objects.filter(published=True)
+
+    paginator = Paginator(posts_list, per_page=2)
+    page = request.GET.get('page', 1)
+    posts = paginator.get_page(page)
+
     context = {
-        'posts': Post.objects.filter(published=True)
+        'posts': posts,
     }
     return render(request, 'core/home.html', context)
 

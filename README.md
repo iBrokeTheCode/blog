@@ -3,6 +3,7 @@
 # Topics
 
 - Context processors
+- Paginator
 
 # Sources
 
