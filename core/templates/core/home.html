@@ -74,18 +74,7 @@
     <!-- TODO: Configure pagination -->
 
     <!-- Pagination Start -->
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link"><span aria-hidden="true">&laquo;</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="{% url "core:home" %}?page=1">1</a></li>
-        <li class="page-item active"><a class="page-link" href="{% url "core:home" %}?page=2">2</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#"><span aria-hidden="true">&raquo;</span></a>
-        </li>
-      </ul>
-    </nav>
+    {% include "core/components/pagination.html" %}
     <!-- Pagination End -->
 
   </div>
