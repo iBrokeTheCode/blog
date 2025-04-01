@@ -11,6 +11,7 @@
     {% endif %}
     <!-- About us End -->
     
+    <!-- Recent posts Start -->
     <div>
       <h4 class="fst-italic">Recent posts</h4>
       <ul class="list-unstyled">
@@ -84,7 +85,9 @@
         </li>
       </ul>
     </div>
+    <!-- Recent posts End -->
 
+    <!-- History Start -->
     <div class="p-4">
       <h4 class="fst-italic">Archives</h4>
       <ol class="list-unstyled mb-0">
@@ -102,14 +105,20 @@
         <li><a href="{% url "core:date" %}">April 2020</a></li>
       </ol>
     </div>
+    <!-- History End -->
 
+    <!-- Social Media Start -->
     <div class="p-4">
       <h4 class="fst-italic">Social Media</h4>
       <ol class="list-unstyled">
         {% for link in social_media %}
         <li><a href="{{ link.url }}" target="_blank"><i class="{{ link.icon }}"></i> {{link.name}}</a></li>
+        {% empty %}
+        <li>No social media links yet</li>
         {% endfor %}
       </ol>
     </div>
+    <!-- Social Media Start -->
+
   </div>
 </div>

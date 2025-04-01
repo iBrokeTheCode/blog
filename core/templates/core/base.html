@@ -32,24 +32,27 @@
     {% include "core/components/navbar.html" %}
     <!-- Navbar End -->
 
-    <!-- Main Start -->
+    <!-- Main Container Start -->
     <main class="container mt-4">
         <div class="row g-5">
+            <!-- Main Start -->
             <div class="col-md-8">
                 {% block main_content %}{% endblock main_content %}
             </div>
+            <!-- Main End -->
 
+            <!-- Sidebar Start -->
             <div class="col-md-4">
                 {% include "core/components/sidebar.html" %}
             </div>
+            <!-- Sidebar End -->
         </div>
     </main>
-    <!-- Main End -->
+    <!-- Main Container End -->
 
     <!-- Footer End -->
     {% include "core/components/footer.html" %}
     <!-- Footer End -->
-
 
     <script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
   </body>

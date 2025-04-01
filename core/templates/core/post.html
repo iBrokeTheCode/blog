@@ -3,10 +3,10 @@
 <!-- Hero Start -->
 {%block main_content %}
 <div>
-  {% comment %} <h3 class="pb-4 mb-4 fst-italic border-bottom">From the Firehose</h3> {% endcomment %}
-
+  <!-- Post Details Start -->
   <article class="blog-post">
     <h2 class="display-5 link-body-emphasis mb-1">Sample blog post</h2>
+    <hr />
     <p class="blog-post-meta">January 1, 2021 by <a href="{% url "core:author" %}">Mark</a></p>
 
     <div class="bg-secondary w-100 mb-4" style="height: 300px"></div>
@@ -55,7 +55,9 @@
       suscipit? Recusandae, iusto harum.
     </p>
   </article>
+  <!-- Posts Details End -->
 
+  <!-- Posts Navigation Start -->
   <nav class="blog-pagination" aria-label="Pagination">
     <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
     <a
@@ -64,6 +66,7 @@
       >Newer</a
     >
   </nav>
+  <!-- Posts Navigation End -->
 </div>
 {% endblock main_content %}
 <!-- Hero End -->
