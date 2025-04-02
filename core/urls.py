@@ -5,9 +5,9 @@ from . import views
 app_name = 'core'
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('post/<int:pk>', views.post, name='post'),
-    path('author/', views.author, name='author'),
-    path('category/', views.category, name='category'),
-    path('date/', views.date, name='date'),
+    path('', views.home_view, name='home'),
+    path('post/<int:pk>', views.post_view, name='post'),
+    path('category/<int:pk>', views.category_view, name='category'),
+    path('author/', views.author_view, name='author'),
+    path('date/', views.date_view, name='date'),
 ]

@@ -1,27 +1,29 @@
 <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item {% if not posts.has_previous %}disabled{% endif %}">
-            <a 
-                class="page-link" 
-                href="{% url "core:home" %}?page={% if posts.has_previous and posts.previous_page_number %}{{posts.previous_page_number}}{% endif %}"
-            >
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
+  <ul class="pagination justify-content-center">
+    <li class="page-item {% if not posts.has_previous %}disabled{% endif %}">
+      <a
+        class="page-link"
+        href="{{ request.path }}?page={% if posts.has_previous and posts.previous_page_number %}{{posts.previous_page_number}}{% endif %}"
+      >
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
 
-        {% for page in posts.paginator.page_range %}
-            <li class="page-item {% if page == posts.number %}active{% endif %}">
-                <a class="page-link" href="{% url "core:home" %}?page={{ page }}">{{ page }}</a>
-            </li>
-        {% endfor %}
-    
-        <li class="page-item {% if not posts.has_next %}disabled{% endif %}">
-            <a 
-                class="page-link" 
-                href="{% url "core:home" %}?page={% if posts.has_next %}{{posts.next_page_number}}{% endif %}"
-            >
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
+    {% for page in posts.paginator.page_range %}
+    <li class="page-item {% if page == posts.number %}active{% endif %}">
+      <a class="page-link" href="{{ request.path }}?page={{ page }}"
+        >{{ page }}</a
+      >
+    </li>
+    {% endfor %}
+
+    <li class="page-item {% if not posts.has_next %}disabled{% endif %}">
+      <a
+        class="page-link"
+        href="{{ request.path }}?page={% if posts.has_next %}{{posts.next_page_number}}{% endif %}"
+      >
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
 </nav>

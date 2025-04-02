@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 
-from .models import Post
+from .models import Post, Category
 
 
-def home(request):
+def home_view(request):
     posts_list = Post.objects.filter(published=True)
 
-    paginator = Paginator(posts_list, per_page=3)
+    paginator = Paginator(posts_list, per_page=1)
     page = request.GET.get('page', 1)
     posts = paginator.get_page(page)
 
@@ -18,7 +18,7 @@ def home(request):
     return render(request, 'core/home.html', context)
 
 
-def post(request, pk):
+def post_view(request, pk):
     try:
         post = get_object_or_404(Post, id=pk)
 
@@ -30,7 +30,7 @@ def post(request, pk):
         return render(request, 'core/404.html')
 
 
-def author(request):
+def author_view(request):
     context = {
         'title': 'Author',
     }
@@ -38,15 +38,22 @@ def author(request):
     return render(request, 'core/home.html', context)
 
 
-def category(request):
+def category_view(request, pk):
+    category = Category.objects.get(id=pk)
+    category_posts = Post.objects.filter(category=category)
+    paginator = Paginator(category_posts, per_page=1)
+    page = request.GET.get('page', 1)
+
     context = {
         'title': 'Category',
+        'category': category,
+        'posts': paginator.get_page(page),
     }
 
-    return render(request, 'core/home.html', context)
+    return render(request, 'core/category.html', context)
 
 
-def date(request):
+def date_view(request):
     context = {
         'title': 'Date',
     }
