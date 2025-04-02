@@ -4,7 +4,7 @@
 
 - Context processors
 - Paginator
-- CKEditor
+- [Prose Editor](https://pypi.org/project/django-prose-editor/)
 
 # Sources
 

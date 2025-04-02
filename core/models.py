@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from ckeditor.fields import RichTextField
+from django_prose_editor.fields import ProseEditorField
 
 
 # ================================================================
@@ -40,8 +40,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    # content = models.TextField()
-    content = RichTextField()
+    content = ProseEditorField()
     image = models.ImageField(upload_to='posts/images', null=True, blank=True)
     published = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
