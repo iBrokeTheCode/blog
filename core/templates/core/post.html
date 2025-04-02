@@ -15,7 +15,7 @@
 
     <h2 class="display-5 link-body-emphasis my-2">{{ post.title }}</h2>
 
-    <p class="blog-post-meta">{{ post.created|date:'F d, Y' }} by <a href="{% url "core:author" %}">{{ post.author }}</a></p>
+    <p class="blog-post-meta">{{ post.created|date:'F d, Y' }} by <a href="{% url "core:author" pk=post.author.id %}">{{ post.author }}</a></p>
 
     <hr />
     <div>{{ post.content|safe }}</div>

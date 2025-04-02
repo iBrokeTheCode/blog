@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 
 from .models import Post, Category
 
@@ -13,7 +14,7 @@ def home_view(request):
 
     context = {
         'posts': posts,
-        'title': 'Home',
+        'title': 'Home',  # TODO: Remove title property if dates has its own template
     }
     return render(request, 'core/home.html', context)
 
@@ -21,21 +22,28 @@ def home_view(request):
 def post_view(request, pk):
     try:
         post = get_object_or_404(Post, id=pk)
-
-        context = {
-            'post': post,
-        }
-        return render(request, 'core/post.html', context)
     except:  # Http404
+        print('error')
         return render(request, 'core/404.html')
 
-
-def author_view(request):
     context = {
-        'title': 'Author',
+        'post': post,
+    }
+    return render(request, 'core/post.html', context)
+
+
+def author_view(request, pk):
+    author = User.objects.get(id=pk)
+    author_posts = Post.objects.filter(author=author)
+    paginator = Paginator(author_posts, per_page=1)
+    page = request.GET.get('page', 1)
+
+    context = {
+        'author': author,
+        'posts': paginator.get_page(page),
     }
 
-    return render(request, 'core/home.html', context)
+    return render(request, 'core/posts_by_author.html', context)
 
 
 def category_view(request, pk):
@@ -45,12 +53,11 @@ def category_view(request, pk):
     page = request.GET.get('page', 1)
 
     context = {
-        'title': 'Category',
         'category': category,
         'posts': paginator.get_page(page),
     }
 
-    return render(request, 'core/category.html', context)
+    return render(request, 'core/posts_by_category.html', context)
 
 
 def date_view(request):
