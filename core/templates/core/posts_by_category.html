@@ -1,0 +1,57 @@
+{% extends "core/base.html" %} {% block title %} {{ category }} {% endblock title %}
+
+<!-- Main Start -->
+{% block main_content %}
+<div class="row mb-2">
+
+  <!-- Posts List Start -->
+  <div class="col-md-12">
+    {% for post in posts %}
+      <!-- Remaining Posts Start -->
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-300 position-relative">
+        <!-- Image Start -->
+        {% if post.image %}
+        <div class="col-4 d-none d-lg-block">
+          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid object-fit-cover h-100">
+        </div>
+        {% endif %}
+        <!-- Image End -->
+        
+        <!-- Post Text Start -->
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary-emphasis">{{ post.category }}</strong>
+          <h3 class="mb-0">{{ post.title }}</h3>
+          <div class="mt-3 mb-4 text-body-secondary">{{ post.created|date:'M d, Y' }}</div>
+          <a
+            href="{% url "core:post" pk=post.id %}" 
+            class="icon-link gap-1 icon-link-hover stretched-link"
+          >
+            Continue reading
+            <svg class="bi"><use xlink:href="#chevron-right" /></svg>
+          </a>
+        </div>
+        <!-- Post Text End -->
+
+      </div>
+    {% empty %}
+    <div class="text-center">
+        <div class="alert alert-light mt-3">
+            <p class="mb-1">
+                No related posts, search another categories or
+                <a class="" href="{% url "core:home" %}">Go Home</a>
+            </p>
+        </div>
+      </div>
+    {% endfor %}
+
+    <!-- Pagination Start -->
+    {% if posts %}
+        {% include "core/components/pagination.html" %}
+    {% endif %}
+    <!-- Pagination End -->
+
+  </div>
+  <!-- Posts List End -->
+</div>
+{% endblock main_content %}
+<!-- Main End -->

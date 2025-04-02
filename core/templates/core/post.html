@@ -1,0 +1,39 @@
+{% extends "core/base.html" %} {% block title %} {{ post.title }} {% endblock title %}
+
+<!-- Hero Start -->
+{%block main_content %}
+<div>
+  <!-- Post Details Start -->
+  <article class="blog-post">
+    {% if post.image %}
+    <div class="mb-4" style="height: 400px">
+      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid object-fit-cover h-100 w-100">
+    </div>
+    {% endif %}
+
+    <span class="badge text-bg-primary">{{ post.category }}</span>
+
+    <h2 class="display-5 link-body-emphasis my-2">{{ post.title }}</h2>
+
+    <p class="blog-post-meta">{{ post.created|date:'F d, Y' }} by <a href="{% url "core:author" pk=post.author.id %}">{{ post.author }}</a></p>
+
+    <hr />
+    <div>{{ post.content|safe }}</div>
+
+    <hr/ >
+    <p>
+      <strong>Tags:</strong>
+      {% for tag in post.tags.all %}
+      <span class="badge text-bg-secondary">{{ tag }}</span>
+      {% endfor %}
+    </p>
+
+  </article>
+  <!-- Posts Details End -->
+
+  <!-- Back Home Start -->
+  <a class="btn btn-outline-primary rounded-pill mb-4" href="{% url "core:home" %}">Go Home</a>
+  <!-- Back Home End -->
+</div>
+{% endblock main_content %}
+<!-- Hero End -->
