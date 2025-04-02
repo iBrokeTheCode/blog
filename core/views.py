@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
+from django.http import Http404
+from datetime import date
 
 from .models import Post, Category
 
@@ -8,7 +10,7 @@ from .models import Post, Category
 def home_view(request):
     posts_list = Post.objects.filter(published=True)
 
-    paginator = Paginator(posts_list, per_page=1)
+    paginator = Paginator(posts_list, per_page=2)
     page = request.GET.get('page', 1)
     posts = paginator.get_page(page)
 
@@ -22,7 +24,7 @@ def home_view(request):
 def post_view(request, pk):
     try:
         post = get_object_or_404(Post, id=pk)
-    except:  # Http404
+    except Http404:
         return render(request, 'core/404.html')
 
     context = {
@@ -34,7 +36,7 @@ def post_view(request, pk):
 def author_view(request, pk):
     author = User.objects.get(id=pk)
     author_posts = Post.objects.filter(author=author)
-    paginator = Paginator(author_posts, per_page=1)
+    paginator = Paginator(author_posts, per_page=2)
     page = request.GET.get('page', 1)
 
     context = {
@@ -48,7 +50,7 @@ def author_view(request, pk):
 def category_view(request, pk):
     category = Category.objects.get(id=pk)
     category_posts = Post.objects.filter(category=category)
-    paginator = Paginator(category_posts, per_page=1)
+    paginator = Paginator(category_posts, per_page=2)
     page = request.GET.get('page', 1)
 
     context = {
@@ -59,9 +61,25 @@ def category_view(request, pk):
     return render(request, 'core/posts_by_category.html', context)
 
 
-def date_view(request):
+def date_view(request, year, month):
+    try:
+        year = int(year)
+        month = int(month)
+
+        if not (1 <= month <= 12):
+            raise ValueError
+
+        month_name = date(year, month, 1).strftime('%B')
+    except ValueError:
+        return render(request, 'core/404.html')
+
+    date_posts = Post.objects.filter(created__year=year, created__month=month)
+    paginator = Paginator(date_posts, per_page=2)
+    page = request.GET.get('page', 1)
+
     context = {
-        'title': 'Date',
+        'title': f'{month_name} {year}',
+        'posts': paginator.get_page(page)
     }
 
     return render(request, 'core/posts_by_date.html', context)

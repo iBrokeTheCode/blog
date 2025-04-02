@@ -27,7 +27,7 @@ def grouped_dates(request):
         field_name='created',
         kind='month',
         order='DESC'
-    ).distinct()
+    )
     month_year_list = []
 
     for d in dates:

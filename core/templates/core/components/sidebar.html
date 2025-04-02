@@ -49,7 +49,7 @@
 
       <ol class="list-unstyled mb-0">
         {% for date in dates %}
-        <li><a href="{% url "core:date" %}">{{ date.month_name }} ({{ date.month }}) {{ date.year }}</a></li>
+        <li><a href="{% url "core:date" year=date.year month=date.month %}">{{ date.month_name }} {{ date.year }}</a></li>
         {% empty %}
         <p>No history yet!</p>
         {% endfor %}
