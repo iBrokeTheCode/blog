@@ -18,7 +18,7 @@
     <p class="blog-post-meta">{{ post.created|date:'F d, Y' }} by <a href="{% url "core:author" %}">{{ post.author }}</a></p>
 
     <hr />
-    <div>{{ post.content }}</div>
+    <div>{{ post.content|safe }}</div>
 
     <hr/ >
     <p>
@@ -32,7 +32,7 @@
   <!-- Posts Details End -->
 
   <!-- Back Home Start -->
-  <a class="btn btn-outline-primary rounded-pill" href="{% url "core:home" %}">Go Home</a>
+  <a class="btn btn-outline-primary rounded-pill mb-4" href="{% url "core:home" %}">Go Home</a>
   <!-- Back Home End -->
 </div>
 {% endblock main_content %}

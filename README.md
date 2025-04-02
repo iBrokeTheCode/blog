@@ -4,6 +4,7 @@
 
 - Context processors
 - Paginator
+- CKEditor
 
 # Sources
 

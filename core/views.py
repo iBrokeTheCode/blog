@@ -19,12 +19,15 @@ def home(request):
 
 
 def post(request, pk):
-    post = get_object_or_404(Post, id=pk)
+    try:
+        post = get_object_or_404(Post, id=pk)
 
-    context = {
-        'post': post,
-    }
-    return render(request, 'core/post.html', context)
+        context = {
+            'post': post,
+        }
+        return render(request, 'core/post.html', context)
+    except:  # Http404
+        return render(request, 'core/404.html')
 
 
 def author(request):
