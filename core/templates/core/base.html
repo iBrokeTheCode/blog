@@ -23,7 +23,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static "css/blog.css" %}" rel="stylesheet" />
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <!-- Theme Picker Start -->
     {% include "core/components/theme_picker.html" %}
     <!-- Theme Picker Start -->
@@ -33,7 +33,7 @@
     <!-- Navbar End -->
 
     <!-- Main Container Start -->
-    <main class="container mt-4">
+    <main class="container mt-4 flex-grow-1">
         <div class="row g-5">
             <!-- Main Start -->
             <div class="col-md-8">

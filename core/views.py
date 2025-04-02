@@ -16,7 +16,7 @@ def home_view(request):
 
     context = {
         'posts': posts,
-        'title': 'Home',  # TODO: Remove title property if dates has its own template
+        'title': 'Home',
     }
     return render(request, 'core/home.html', context)
 
