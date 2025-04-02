@@ -4,9 +4,9 @@ This project is a feature-rich blog application built with Python and the Django
 
 This project showcases skills in backend development with Django, frontend integration using Bootstrap, and database management, reflecting my ongoing efforts to build a strong professional developer profile in Python.
 
-![]()
+![Home Page](./demo/home-demo.webp)
 
----
+![Post Page](./demo/post-demo.webp)
 
 ## Features
 
@@ -18,6 +18,7 @@ This project showcases skills in backend development with Django, frontend integ
   - Category
   - Month and Year of publication
   - Author
+- Dark & Light theme
 
 ### Planned Enhancements (Roadmap)
 
@@ -26,8 +27,6 @@ This project showcases skills in backend development with Django, frontend integ
 - **Post Interaction:** Implement a 'Like' system for registered users.
 - **Author Profiles:** Dedicated pages displaying details about content authors, leveraging Django's built-in `User` model.
 
----
-
 ## Key Django Concepts Utilized
 
 This project leverages several important Django features and third-party packages:
@@ -35,8 +34,6 @@ This project leverages several important Django features and third-party package
 - **Context Processors:** Efficiently inject common data (e.g., category lists, archives) into the context of all templates, reducing code repetition.
 - **Paginator:** Implemented to manage large lists of posts by splitting them into digestible pages for better user experience and performance.
 - **[django-prose-editor](https://pypi.org/project/django-prose-editor/):** Integrated to provide a user-friendly rich text editor for creating and editing blog post content.
-
----
 
 ## Technology Stack
 
