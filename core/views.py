@@ -23,7 +23,6 @@ def post_view(request, pk):
     try:
         post = get_object_or_404(Post, id=pk)
     except:  # Http404
-        print('error')
         return render(request, 'core/404.html')
 
     context = {
@@ -65,4 +64,4 @@ def date_view(request):
         'title': 'Date',
     }
 
-    return render(request, 'core/home.html', context)
+    return render(request, 'core/posts_by_date.html', context)

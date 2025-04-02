@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.categories',
                 'core.context_processors.business_information',
+                'core.context_processors.grouped_dates',
             ],
         },
     },
